@@ -1,0 +1,37 @@
+.container{
+    height: 200px;
+    width: 200px;
+}
+
+.data{
+    padding: 5px;
+}
+button{
+    margin-top: 20px;
+}
+
+.tabledata{
+    margin-top: 200px;
+    margin-left: 200px;
+}
+
+.tabledetails{
+    border: 2px solid black;
+    width: 550px;
+    height: auto;
+}
+
+.editData{
+padding: 5px;
+background-color: royalblue;
+color: white;
+margin-left: 5px;
+width:60px;
+}
+
+.deleteData{
+    padding: 5px;
+    background-color: red;
+    color: white;
+    margin-left: -5px;
+}
