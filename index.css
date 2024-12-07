@@ -35,3 +35,7 @@ width:60px;
     color: white;
     margin-left: -5px;
 }
+
+.highlight-row{
+    background-color: rgb(184, 53, 74) !important;
+  }

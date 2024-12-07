@@ -45,7 +45,7 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" >Contact</span>
-          <input type="number" class="form-control" id="contact" placeholder="enter your contact no" aria-label="Username" aria-describedby="basic-addon1">
+          <input type="number" class="form-control" id="contact" placeholder="enter your contact no" aria-label="Username" aria-describedby="basic-addon1" maxlength="10">
         </div>
         <button type="button" class="btn btn-success" id="employeeDetails">Submit</button>
         <button type="button" class="btn btn-primary" id="updateDetails">Update</button>
@@ -54,7 +54,7 @@
     <div class="tabledata">
       <h2>Employee Data:</h2>
       <div class="tabledetails">
-    <table class="table table-striped-columns">
+    <table class="table ">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -72,6 +72,13 @@
   <script>
 
 $(document).ready(function(){
+
+  $("#contact").on("input", function () {
+    const contact = $(this).val();
+    if (contact.length > 10) {
+      $(this).val(contact.slice(0, 10));
+    }
+  });
 
 $("#updateDetails").hide();
 let rowData = null;
@@ -146,6 +153,7 @@ $("#employeeDetails").click(function(e){
 });
 
 $(document).on("click", ".editData", function(){
+
   rowData = $(this).closest("tr");
 
   const name = rowData.find("td:nth-child(1)").text();
@@ -158,42 +166,65 @@ $(document).on("click", ".editData", function(){
   $("#dept").val(dept);
   $("#contact").val(contact);
 
-  rowData.css("background-color", "pink");
+  $(" #tablebody tr").removeClass("highlight-row"); 
+  rowData.addClass("highlight-row");
 
   $("#employeeDetails").hide();
 
-  $(".editData").hide();
+  $(this).hide();
 
   $("#updateDetails").show();
-});
-
-$(document).on("click", ".deleteData", function (){
-
- rowDelete=$(this).closest("tr");
-
- const confirmDelete= confirm("Are you deleting this row??")
-
- if(confirmDelete){
-  rowDelete.remove()
- }
-
 });
 
 $(document).on("click","#updateDetails",function(){
 
 
+  if (rowData) {
+      const name = $("#name").val();
+      const eid = $("#eid").val();
+      const dept = $("#dept").val();
+      const contact = $("#contact").val();
 
+      if (name === "" || eid === "" || dept === "" || contact === "" || contact.length !== 10) {
+        alert("Fill all the fields ");
+        return false;
+      }
 
-  $(".editData").show();
+      rowData.find("td:nth-child(1)").text(name);
+      rowData.find("td:nth-child(2)").text(eid);
+      rowData.find("td:nth-child(3)").text(dept);
+      rowData.find("td:nth-child(4)").text(contact);
+
+      rowData.removeClass("highlight-row");
+      rowData.find(".editData").show();
+      rowData = null;
+    }
+
+    $("#name").val("");
+    $("#eid").val("");
+    $("#dept").val("");
+    $("#contact").val("");
 
   $("#employeeDetails").show();
 
   $("#updateDetails").hide();
 });
 
+$(document).on("click", ".deleteData", function (){
+
+rowDelete=$(this).closest("tr");
+
+const confirmDelete= confirm("Are you deleting this row??")
+
+if(confirmDelete){
+ rowDelete.remove()
+}
+
+});
+
 });
 
 
-  </script>
+</script>
 </html>
 
