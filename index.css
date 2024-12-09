@@ -1,41 +1,57 @@
-.container{
-    height: 200px;
-    width: 200px;
+.container-md {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.data{
-    padding: 5px;
-}
-button{
+.tabledata {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.tabledata{
-    margin-top: 200px;
-    margin-left: 200px;
+.tabledetails {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
 }
 
-.tabledetails{
+table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
     border: 2px solid black;
-    width: 550px;
-    height: auto;
 }
 
-.editData{
-padding: 5px;
-background-color: royalblue;
-color: white;
-margin-left: 5px;
-width:60px;
+th {
+    background-color: #f8f9fa;
 }
 
-.deleteData{
+.input-group {
+    margin-bottom: 15px;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.editData {
+    padding: 5px;
+    background-color: royalblue;
+    color: white;
+    width: 60px;
+    text-align: center;
+    border: none;
+}
+
+.deleteData {
     padding: 5px;
     background-color: red;
     color: white;
-    margin-left: -5px;
+    width: 60px;
+    text-align: center;
+    border: none;
 }
-
-.highlight-row{
-    background-color: rgb(184, 53, 74) !important;
-  }
