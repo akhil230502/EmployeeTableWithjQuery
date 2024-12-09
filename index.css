@@ -33,6 +33,9 @@ th {
     margin-bottom: 15px;
 }
 
+.input-group-text{
+    padding-left: 10px;
+}
 button {
     margin-top: 20px;
     width: 100%;

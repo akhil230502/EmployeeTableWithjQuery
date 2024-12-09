@@ -31,19 +31,19 @@
   <body>
     <div class="container-md">
         <div class="input-group mb-3">
-          <span class="input-group-text">Name</span>
+          <span class="input-group-text">Name-of-EM</span>
           <input type="text" class="form-control" placeholder="enter your name"  id="name"aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text" >ID</span>
+          <span class="input-group-text" >Employee-ID</span>
           <input type="text" class="form-control" id="eid" placeholder="enter your eid" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text">Dept</span>
+          <span class="input-group-text">Department*</span>
           <input type="text" class="form-control"   id="dept" placeholder="enter your dept" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text" >Contact</span>
+          <span class="input-group-text" >Contact-EMP</span>
           <input type="number" class="form-control" id="contact" placeholder="enter your contact no" aria-label="Username" aria-describedby="basic-addon1" maxlength="10">
         </div>
         <button type="button" class="btn btn-success" id="handleFunction">Submit</button>
@@ -81,7 +81,7 @@ function updateSerialNumbers() {
 
 $("#contact").on("keypress", function () {
   const contact = $(this).val();
-  if (contact.length == 10) {
+  if (contact.length === 10) {
     $(this).val(contact.slice(0, 10));
     alert("Contact number must be 10 digits");
   }
@@ -95,23 +95,26 @@ $("#handleFunction").click(function (e) {
   const dept = $("#dept").val();
   const contact = $("#contact").val();
 
-  let isValid =false;
+  let isValid =true;
 
   if (name === "") {
     alert("Enter your name");
-    isValid;
+    isValid=false;
   }
   if (eid === "") {
     alert("Enter your ID");
-    isValid;
+    isValid=false;
   }
   if (dept === "") {
     alert("Enter your department");
-    isValid;
+    isValid=false;
   }
   if (contact === "" || contact.length !== 10) {
     alert("Enter a valid 10-digit contact number");
-    isValid;
+    isValid=false;
+  }
+  if(!isValid){
+    return;
   }
 
   if ($(this).text() === "Update") {
